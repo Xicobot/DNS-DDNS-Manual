@@ -1,0 +1,16 @@
+;
+; BIND reverse data file for local loopback interface
+;
+$TTL	604800
+$ORIGIN 0.168.192.IN-ADDR.ARPA.
+@	IN	SOA	ns.1asirdeneb.org. root.1asirdeneb.org. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+	IN	NS	ns.1asirdeneb.org.
+1	IN	PTR	ns.1asirdeneb.org.
+1	IN	PTR	www.1asirdeneb.org.
+1	IN	PTR	ftp.1asirdeneb.org.
