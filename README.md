@@ -1,5 +1,5 @@
 # DNS-DDNS-Manual
-
+![dns](img/DNS.jpg)
 The Domain Name System (DNS) is a fundamental component of the internet that translates human-readable domain names (e.g., www.example.com) into numerical IP addresses (e.g., 192.0.2.1), enabling devices to locate and communicate with each other across the network.
 
 ## How DNS Works:
@@ -12,3 +12,8 @@ The Domain Name System (DNS) is a fundamental component of the internet that tra
 7. This hierarchical process ensures that domain names are translated efficiently and correctly, facilitating seamless browsing and resource access on the internet.
 
 In this repository i will give you the text files so you can work with that without needing anything more.
+
+### Index
+1. Introduction
+2. Install and config
+3. DDNS Config
