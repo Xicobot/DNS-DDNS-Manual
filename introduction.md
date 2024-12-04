@@ -10,5 +10,5 @@ The Domain Name System (DNS) is a fundamental component of the internet that tra
 7. This hierarchical process ensures that domain names are translated efficiently and correctly, facilitating seamless browsing and resource access on the internet.
 ---
 In this repository i will give you the files so you can work with that without needing anything more.
-You can find it [here](.conf)!
-Or you can learn more about DNS and DDNS [here](teory.md)
+- You can find it [here](.conf)!
+-  Or you can learn more about DNS and DDNS [here](teory.md)
