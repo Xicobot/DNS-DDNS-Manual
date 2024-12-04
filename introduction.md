@@ -8,6 +8,7 @@ The Domain Name System (DNS) is a fundamental component of the internet that tra
 5. Response to the Browser: The resolver sends the IP address back to the user’s browser, which uses it to establish a connection to the web server hosting the website.
 6. Caching: To improve efficiency and reduce load, DNS responses are cached at various levels (e.g., by the resolver, the user’s device) for a specified time known as Time-to-Live (TTL).
 7. This hierarchical process ensures that domain names are translated efficiently and correctly, facilitating seamless browsing and resource access on the internet.
-
+---
 In this repository i will give you the files so you can work with that without needing anything more.
 You can find it [here](.conf)!
+Or you can learn more about DNS and DDNS [here](teory.md)
