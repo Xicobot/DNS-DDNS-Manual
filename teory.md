@@ -66,3 +66,42 @@ The zone file describes, using the so-called Resource Records (RR), the part of 
   - Authoritative name servers for the domain (NS RR).
 - In the case of delegated subdomains, the name servers responsible for the subdomain (NS RR).
 - For delegated subdomains, a record allowing the domain server to reach the subdomain server (A or AAAA RR).
+
+# DNS Authoritative Server and Resolver
+
+Most of the work of an authoritative DNS server is dedicated to responding to DNS queries from programs called resolvers. The resolver on a PC is a library installed on the user's computer that handles translating user program DNS queries into the DNS protocol and then sending them out. 
+
+The most common case is when a browser on a user's computer asks the following question: "What is the IP address of www.example.com?" and sends this request to the PC's resolver. The resolver will translate the query into the DNS protocol and send it to the resolver of the name server configured locally, either through DHCP or manually. From there, the query may proceed in several ways. In this case, it would be a recursive query, as shown in the following image:
+
+## DNS Query Types
+
+The DNS protocol defines three types of queries:
+
+- Recursive
+- Iterative or non-recursive
+- Inverse
+## 1. **Recursive Query**
+In a **recursive query**, the DNS client (usually a resolver) expects the DNS server to take on the full responsibility of finding the requested information. If the server does not have the information in its cache, it will query other DNS servers on behalf of the client until the answer is found, or the query fails. 
+
+- **Example**: A user queries their local DNS server for the IP address of `example.com`. If the local DNS server does not have this information cached, it will perform the necessary steps to find the authoritative server for the domain and return the final answer to the user.
+
+- **Key point**: The client waits until it gets a final answer (either a result or an error), and the DNS server handles the entire process of querying other servers if needed.
+
+## 2. **Iterative Query (Non-recursive Query)**
+In an **iterative (non-recursive) query**, the DNS client makes the request to the DNS server, but the server responds with the best answer it can. If the server doesn’t have the requested information, it will return a referral to another DNS server, which may have the information or be able to refer the client further down the line.
+
+- **Example**: A user queries a DNS server for `example.com`. If the server does not have the direct answer, it will provide the IP address of the next DNS server that may know the answer (for example, the authoritative server for `.com`). The client then sends the query to the next server in the referral chain.
+
+- **Key point**: The DNS client must then continue the process itself by querying other DNS servers directly. The client doesn’t wait for the server to complete the full query chain.
+
+## 3. **Inverse Query**
+An **inverse query** is a reverse DNS lookup. Instead of resolving a domain name to an IP address (as is done in typical queries), an inverse query resolves an IP address to a domain name. 
+
+- **Example**: Given an IP address like `192.168.1.1`, an inverse query might return the domain name associated with that IP address, such as `server.example.com`.
+
+- **Key point**: This type of query is often used for diagnostic purposes (such as for reverse IP lookups) and is defined by querying the special `in-addr.arpa` domain (for IPv4 addresses) or `ip6.arpa` (for IPv6 addresses).
+
+## Summary:
+- **Recursive Query**: The server performs all the work and returns the final answer.
+- **Iterative Query (Non-recursive)**: The server provides a referral to another server if it doesn't have the answer.
+- **Inverse Query**: Resolves an IP address to a domain name (reverse lookup).
